@@ -6,7 +6,10 @@ import { io } from "socket.io-client";
 const App = () => {
   const [message, setMessage] = useState("");
   // const socket = io("http://localhost:3000");
-  const socket = io("https://codeshare-backend-teal.vercel.app/")
+  const socket = io("https://codeshare-backend-teal.vercel.app/", {
+    withCredentials: true,
+    transports: ['websocket', 'polling']
+  });
   const debounceTimer = useRef(null);
   const [isConnected, setIsConnected] = useState(socket.connected);
 
